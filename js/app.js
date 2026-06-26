@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
             validityInput.value + " Days";
 
         pExpiration.textContent =
-            formatDate(expirationInput.value);
+            expirationInput.value;
 
         pFee.textContent =
             feeInput.value;
@@ -208,13 +208,18 @@ document.addEventListener("DOMContentLoaded", () => {
         citizenshipInput,
         issueDateInput,
         validityInput,
+        expirationInput,
         feeInput,
         officerInput,
         badgeInput,
         signatureInput
     ].forEach(input => {
     
+        if (!input) return;
+    
         input.addEventListener("input", updatePermit);
+        input.addEventListener("keyup", updatePermit);
+        input.addEventListener("change", updatePermit);
     
     });
 
