@@ -201,17 +201,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ];
 
-        document.addEventListener("input", function (e) {
-        
-            if (
-                e.target.matches(
-                    "#name, #citizenId, #dob, #citizenship, #issueDate, #validity, #fee, #officer, #badge, #signatureInput"
-                )
-            ) {
-                updatePermit();
-            }
-        
-        });
+    document.addEventListener("input", function (e) {
+
+        if (
+            e.target.matches(
+                "#name, #citizenId, #dob, #citizenship, #issueDate, #validity, #fee, #officer, #badge, #signatureInput"
+            )
+        ) {
+            updatePermit();
+        }
+
+    });
 
     /*=====================================================
         NEW PERMIT
@@ -256,6 +256,11 @@ document.addEventListener("DOMContentLoaded", () => {
         ---------------------------------------------*/
 
         updatePermit();
+
+        pName.innerText = nameInput.value;
+        pCitizenId.innerText = citizenIdInput.value;
+        pDOB.innerText = formatDate(dobInput.value);
+        pCitizenship.innerText = citizenshipInput.value;
 
         /*---------------------------------------------
             Ready for Next Permit
