@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LSPD Work Permit Generator</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/logo.webp">
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- UI Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Signature Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/permit.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ========================================= -->
+    <!-- TOP TOOLBAR -->
+    <!-- ========================================= -->
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <img
+                src="assets/logo.webp"
+                alt="Los Santos Police Department"
+                class="topbar-logo">
+
+            <div class="title-group">
+
+                <h1>LSPD Work Permit Generator</h1>
+
+                <p>Los Santos Police Department</p>
+
+            </div>
+
+        </div>
+
+        <div class="topbar-right">
+
+            <button
+                id="newPermitBtn"
+                class="toolbar-btn">
+
+                New Permit
+
+            </button>
+
+            <button
+                id="downloadBtn"
+                class="toolbar-btn primary">
+
+                Download PNG
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- ========================================= -->
+    <!-- MAIN LAYOUT -->
+    <!-- ========================================= -->
+
+    <div class="main-layout">
+
+        <!-- ========================================= -->
+        <!-- LEFT PANEL -->
+        <!-- ========================================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <img
+                    src="assets/logo.webp"
+                    alt="LSPD">
+
+                <h2>Work Permit</h2>
+
+                <span>Permit Generator</span>
+
+            </div>
+
+            <!-- ========================================= -->
+            <!-- APPLICANT INFORMATION -->
+            <!-- ========================================= -->
+
+            <section class="sidebar-section">
+
+                <h3>
+
+                    Applicant Information
+
+                </h3>
+
+                <div class="form-group">
+
+                    <label for="name">
+
+                        Name of Applicant
+
+                    </label>
+
+                    <input
+                        id="name"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Enter applicant name">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="citizenId">
+
+                        Citizen ID Number
+
+                    </label>
+
+                    <input
+                        id="citizenId"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Citizen ID Number">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="dob">
+
+                        Date of Birth
+
+                    </label>
+
+                    <input
+                        id="dob"
+                        type="date">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="citizenship">
+
+                        Citizenship
+
+                    </label>
+
+                    <input
+                        id="citizenship"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Citizenship">
+
+                </div>
+
+            </section>
+            <!-- ========================================= -->
+            <!-- PERMIT INFORMATION -->
+            <!-- ========================================= -->
+
+            <section class="sidebar-section">
+
+                <h3>
+
+                    Permit Information
+
+                </h3>
+
+                <div class="form-group">
+
+                    <label for="issueDate">
+
+                        Date of Issuance
+
+                    </label>
+
+                    <input
+                        id="issueDate"
+                        type="date">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="validity">
+
+                        Validity (Days)
+
+                    </label>
+
+                    <input
+                        id="validity"
+                        type="number"
+                        min="1"
+                        value="14"
+                        placeholder="14">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="expiration">
+
+                        Expiration Date
+
+                    </label>
+
+                    <input
+                        id="expiration"
+                        type="text"
+                        readonly>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="fee">
+
+                        Fee Paid
+
+                    </label>
+
+                    <input
+                        id="fee"
+                        type="text"
+                        value="$5,000">
+
+                </div>
+
+            </section>
+
+            <!-- ========================================= -->
+            <!-- AUTHORIZED OFFICER -->
+            <!-- ========================================= -->
+
+            <section class="sidebar-section">
+
+                <h3>
+
+                    Authorized Officer
+
+                </h3>
+
+                <div class="form-group">
+
+                    <label for="officer">
+
+                        Officer Name
+
+                    </label>
+
+                    <input
+                        id="officer"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Officer Name">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="signatureInput">
+
+                        Signature
+
+                    </label>
+
+                    <input
+                        id="signatureInput"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Officer Signature">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="badge">
+
+                        Badge Number
+
+                    </label>
+
+                    <input
+                        id="badge"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Badge Number">
+
+                </div>
+
+            </section>
+
+            <!-- ========================================= -->
+            <!-- APPLICANT PHOTO -->
+            <!-- ========================================= -->
+
+            <section class="sidebar-section">
+
+                <h3>
+
+                    Applicant Photo
+
+                </h3>
+
+                <div
+                    id="photoContainer"
+                    class="photo-container">
+
+                    <img
+                        id="photoPreview"
+                        src="assets/placeholder.png"
+                        alt="Applicant Photo">
+
+                </div>
+
+                <p class="photo-tip">
+
+                    Press <strong>CTRL + V</strong> after copying a screenshot.
+
+                </p>
+
+            </section>
+            <!-- ========================================= -->
+            <!-- ACTIONS -->
+            <!-- ========================================= -->
+
+            <section class="sidebar-section">
+
+                <h3>
+
+                    Actions
+
+                </h3>
+
+                <button
+                    id="downloadSidebar"
+                    class="primary-btn">
+
+                    Download Permit PNG
+
+                </button>
+
+                <button
+                    id="newPermitSidebar"
+                    class="secondary-btn">
+
+                    New Permit
+
+                </button>
+
+            </section>
+
+        </aside>
+
+        <!-- ========================================= -->
+        <!-- WORKSPACE -->
+        <!-- ========================================= -->
+
+        <main class="workspace">
+
+            <div class="workspace-inner">
+
+                <div class="paper-shadow">
+
+                    <div
+                        id="permit"
+                        class="permit-page">
+
+                        <!-- ========================================= -->
+                        <!-- HEADER -->
+                        <!-- ========================================= -->
+
+                        <header class="permit-header">
+
+                            <div class="permit-logo">
+
+                                <img
+                                    src="assets/logo.webp"
+                                    alt="LSPD Logo">
+
+                            </div>
+
+                            <div class="permit-title">
+
+                                <h3>
+
+                                    LOS SANTOS POLICE DEPARTMENT
+
+                                </h3>
+
+                                <h1>
+
+                                    WORK PERMIT
+
+                                </h1>
+
+                            </div>
+
+                        </header>
+
+                        <!-- ========================================= -->
+                        <!-- APPLICANT INFORMATION -->
+                        <!-- ========================================= -->
+
+                        <section class="applicant-section">
+
+                            <div class="permit-photo">
+
+                                <img
+                                    id="permitPhoto"
+                                    src="assets/placeholder.png"
+                                    alt="Applicant">
+
+                            </div>
+
+                            <div class="permit-information">
+
+                                <div class="permit-field">
+
+                                    <label>
+
+                                        Name of Applicant
+
+                                    </label>
+
+                                    <div
+                                        id="pName"
+                                        class="field-value">
+
+                                    </div>
+
+                                </div>
+
+                                <div class="permit-field">
+
+                                    <label>
+
+                                        Citizen ID Number
+
+                                    </label>
+
+                                    <div
+                                        id="pCitizenId"
+                                        class="field-value">
+
+                                    </div>
+
+                                </div>
+
+                                <div class="permit-field">
+
+                                    <label>
+
+                                        Date of Birth
+
+                                    </label>
+
+                                    <div
+                                        id="pDOB"
+                                        class="field-value">
+
+                                    </div>
+
+                                </div>
+
+                                <div class="permit-field">
+
+                                    <label>
+
+                                        Citizenship
+
+                                    </label>
+
+                                    <div
+                                        id="pCitizenship"
+                                        class="field-value">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+                        <!-- ========================================= -->
+                        <!-- PERMIT BODY -->
+                        <!-- ========================================= -->
+
+                        <section class="permit-body">
+
+                            <h2>
+
+                                Executive Directive for San Andreas Mining Safety Regulations
+
+                            </h2>
+
+                            <p>
+
+                                This Work Permit authorizes the individual identified
+                                above to engage in lawful mining operations within
+                                designated mining locations throughout the State of
+                                San Andreas.
+
+                            </p>
+
+                            <p>
+
+                                This permit remains valid only while the holder complies
+                                with all provisions established under the Executive
+                                Directive for San Andreas Mining Safety Regulations.
+
+                            </p>
+
+                            <h3>
+
+                                Conditions of this Permit
+
+                            </h3>
+
+                            <ul class="requirements">
+
+                                <li>
+
+                                    Wear a Hard Hat at all times.
+
+                                </li>
+
+                                <li>
+
+                                    Wear a Reflective Safety Vest.
+
+                                </li>
+
+                                <li>
+
+                                    Wear Work Boots suitable for mining operations.
+
+                                </li>
+
+                                <li>
+
+                                    Carry this Work Permit while conducting mining
+                                    activities.
+
+                                </li>
+
+                                <li>
+
+                                    Present this permit immediately upon request by
+                                    any Law Enforcement Officer or authorized
+                                    Government Official.
+
+                                </li>
+
+                            </ul>
+
+                            <div class="warning">
+
+                                Failure to comply with the above requirements may
+                                result in immediate revocation of this permit,
+                                citations, fines, or additional enforcement action
+                                under the Executive Directive for San Andreas Mining
+                                Safety Regulations.
+
+                            </div>
+
+                        </section>
+
+                        <!-- ========================================= -->
+                        <!-- PERMIT DETAILS -->
+                        <!-- ========================================= -->
+
+                        <section class="permit-details-row">
+
+                            <div class="detail-box">
+
+                                <label>
+
+                                    Date of Issuance
+
+                                </label>
+
+                                <div
+                                    id="pIssueDate"
+                                    class="detail-value">
+
+                                </div>
+
+                            </div>
+
+                            <div class="detail-box">
+
+                                <label>
+
+                                    Validity
+
+                                </label>
+
+                                <div
+                                    id="pValidity"
+                                    class="detail-value">
+
+                                </div>
+
+                            </div>
+
+                            <div class="detail-box">
+
+                                <label>
+
+                                    Expiration Date
+
+                                </label>
+
+                                <div
+                                    id="pExpiration"
+                                    class="detail-value">
+
+                                </div>
+
+                            </div>
+
+                            <div class="detail-box">
+
+                                <label>
+
+                                    Fee Paid
+
+                                </label>
+
+                                <div
+                                    id="pFee"
+                                    class="detail-value">
+
+                                </div>
+
+                            </div>
+
+                        </section>
+                        <!-- ========================================= -->
+                        <!-- AUTHORIZED OFFICER -->
+                        <!-- ========================================= -->
+
+                        <footer class="permit-footer">
+
+                            <div class="officer-section">
+
+                                <label>
+
+                                    Authorized Officer
+
+                                </label>
+
+                                <div
+                                    id="signature"
+                                    class="signature">
+
+                                </div>
+
+                                <div
+                                    id="printedOfficer"
+                                    class="printed-name">
+
+                                </div>
+
+                            </div>
+
+                            <div class="badge-section">
+
+                                <label>
+
+                                    Badge Number
+
+                                </label>
+
+                                <div
+                                    id="pBadge"
+                                    class="badge-value">
+
+                                </div>
+
+                            </div>
+
+                        </footer>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- STATUS BAR -->
+    <!-- ========================================= -->
+
+    <footer class="status-bar">
+
+        <span>
+
+            Ready
+
+        </span>
+
+        <span>
+
+            LSPD Work Permit Generator v1.0
+
+        </span>
+
+    </footer>
+
+</div>
+
+<!-- ========================================= -->
+<!-- LIBRARIES -->
+<!-- ========================================= -->
+
+<script src="libraries/html2canvas.min.js"></script>
+
+<!-- ========================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================= -->
+
+<script src="js/app.js"></script>
+<script src="js/clipboard.js"></script>
+<script src="js/export.js"></script>
+
+</body>
+
+</html>
