@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
             validityInput.value + " Days";
 
         pExpiration.textContent =
-            expirationInput.value;
+            formatDate(expirationInput.value);
 
         pFee.textContent =
             feeInput.value;
@@ -201,14 +201,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ];
 
-    liveInputs.forEach(input => {
-
-    officerInput.addEventListener("input", updatePermit);
-
-    badgeInput.addEventListener("input", updatePermit);
+    [
+        nameInput,
+        citizenIdInput,
+        dobInput,
+        citizenshipInput,
+        issueDateInput,
+        validityInput,
+        feeInput,
+        officerInput,
+        badgeInput,
+        signatureInput
+    ].forEach(input => {
     
-    signatureInput.addEventListener("input", updatePermit);
-
+        input.addEventListener("input", updatePermit);
+    
     });
 
     /*=====================================================
