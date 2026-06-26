@@ -201,27 +201,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ];
 
-    [
-        nameInput,
-        citizenIdInput,
-        dobInput,
-        citizenshipInput,
-        issueDateInput,
-        validityInput,
-        expirationInput,
-        feeInput,
-        officerInput,
-        badgeInput,
-        signatureInput
-    ].forEach(input => {
-    
-        if (!input) return;
-    
-        input.addEventListener("input", updatePermit);
-        input.addEventListener("keyup", updatePermit);
-        input.addEventListener("change", updatePermit);
-    
-    });
+        document.addEventListener("input", function (e) {
+        
+            if (
+                e.target.matches(
+                    "#name, #citizenId, #dob, #citizenship, #issueDate, #validity, #fee, #officer, #badge, #signatureInput"
+                )
+            ) {
+                updatePermit();
+            }
+        
+        });
 
     /*=====================================================
         NEW PERMIT
